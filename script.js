@@ -6,15 +6,21 @@ const listEl = document.getElementById("list-el");
 
 //attach event listener function to save button
 saveBtn.addEventListener('click', () => {
-    myLeads.push(inputEl.value)
-    appendList();
-    displayList();
+    if (inputEl.value.trim()) {
+        myLeads.push(inputEl.value.trim());
+        renderList(); // show the contents of the list.
+        inputEl.value = ""; 
+    }
+    
+    //appendList();
+    //displayList();
 })
 
 // create a variable, listItems to hold all the HTML for the list Items.
-let listItems = "" ;
 
-function appendList() {
+
+function renderList() {
+    let listItems = "" ; 
     for(let i=0; i< myLeads.length; i++) {
         listItems += "<li>" + myLeads[i] + "</li>"
         //console.log(myLeads[i]);
@@ -26,8 +32,9 @@ function appendList() {
         //appennd to the unordered list
         //listEl.append(li);
     }
-}
-
-function displayList() {
     listEl.innerHTML = listItems;
 }
+
+//function displayList() {
+//    listEl.innerHTML = listItems;
+//}
