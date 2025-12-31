@@ -9,8 +9,14 @@ saveBtn.addEventListener('click', () => {
 
     myLeads.push(inputEl.value)
     for(let i=0; i< myLeads.length; i++) {
-        listEl.innerHTML += "<li>" + myLeads[i] + "</li>"
+        //listEl.innerHTML += "<li>" + myLeads[i] + "</li>"
         //console.log(myLeads[i]);
+        // create element
+        const li = document.createElement("li");
+        //set text content
+        li.textContent = myLeads[i];
+        //appennd to the unordered list
+        listEl.append(li);
     }
     
 })
