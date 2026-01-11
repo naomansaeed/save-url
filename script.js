@@ -1,9 +1,15 @@
 //let myLeads = []
 
 // Turning String to array with JSON.parse
-let myLeads = '["www.awesomelead.com"]'
-myLeads = JSON.parse(myLeads);
-myLeads.push("www.epicLead.com");
+//let myLeads = '["www.awesomelead.com"]'
+//myLeads = JSON.parse(myLeads);
+//myLeads.push("www.epicLead.com");
+//console.log(myLeads);
+
+
+// Turning an Array into string using JSON.stringify();
+let myLeads = ["www.awesomelead.com"];
+myLeads = JSON.stringify(myLeads[0]);
 console.log(myLeads);
 
 const saveBtn = document.getElementById("input-btn");
