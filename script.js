@@ -1,4 +1,10 @@
-let myLeads = []
+//let myLeads = []
+
+// Turning String to array with JSON.parse
+let myLeads = '["www.awesomelead.com"]'
+myLeads = JSON.parse(myLeads);
+myLeads.push("www.epicLead.com");
+console.log(myLeads);
 
 const saveBtn = document.getElementById("input-btn");
 const inputEl = document.getElementById("input-el");
