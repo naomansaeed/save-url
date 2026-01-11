@@ -1,4 +1,5 @@
-let myLeads = []
+//let myLeads = []
+
 
 // Turning String to array with JSON.parse
 //let myLeads = '["www.awesomelead.com"]'
@@ -16,14 +17,23 @@ const saveBtn = document.getElementById("input-btn");
 const inputEl = document.getElementById("input-el");
 const listEl = document.getElementById("list-el");
 
+// Try to show previously saved leads from local storage
+let myLeads = JSON.parse(localStorage.getItem("myLeads")) || [];
+renderList();
+
 //attach event listener function to save button
 saveBtn.addEventListener('click', () => {
     if (inputEl.value.trim()) {
         myLeads.push(inputEl.value.trim());
 
+        
+
         renderList(); // show the contents of the list.
 
         // Save the myLeads array to localStorage
+        localStorage.setItem("myLeads", JSON.stringify(myLeads));
+
+        
         inputEl.value = ""; 
     }
     
