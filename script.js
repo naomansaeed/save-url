@@ -1,4 +1,4 @@
-//let myLeads = []
+let myLeads = []
 
 // Turning String to array with JSON.parse
 //let myLeads = '["www.awesomelead.com"]'
@@ -8,9 +8,9 @@
 
 
 // Turning an Array into string using JSON.stringify();
-let myLeads = ["www.awesomelead.com"];
-myLeads = JSON.stringify(myLeads[0]);
-console.log(myLeads);
+//let myLeads = ["www.awesomelead.com"];
+//myLeads = JSON.stringify(myLeads[0]);
+//console.log(myLeads);
 
 const saveBtn = document.getElementById("input-btn");
 const inputEl = document.getElementById("input-el");
@@ -20,7 +20,10 @@ const listEl = document.getElementById("list-el");
 saveBtn.addEventListener('click', () => {
     if (inputEl.value.trim()) {
         myLeads.push(inputEl.value.trim());
+
         renderList(); // show the contents of the list.
+
+        // Save the myLeads array to localStorage
         inputEl.value = ""; 
     }
     
