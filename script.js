@@ -18,8 +18,16 @@ const inputEl = document.getElementById("input-el");
 const listEl = document.getElementById("list-el");
 
 // Try to show previously saved leads from local storage
-let myLeads = JSON.parse(localStorage.getItem("myLeads")) || [];
-renderList();
+let myLeads = [] //JSON.parse(localStorage.getItem("myLeads")) || [];
+
+let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
+if (!Boolean(leadsFromLocalStorage)){
+    console.log("Nothing Found in local storage.");
+}
+else {
+    myLeads = leadsFromLocalStorage;
+    renderList();
+}
 
 //attach event listener function to save button
 saveBtn.addEventListener('click', () => {
