@@ -27,7 +27,7 @@ if (!Boolean(leadsFromLocalStorage)){
 }
 else {
     myLeads = leadsFromLocalStorage;
-    renderList();
+    renderList(myLeads);
 }
 
 //attach event listener function to save button
@@ -37,7 +37,7 @@ saveBtn.addEventListener('click', () => {
 
         
 
-        renderList(); // show the contents of the list.
+        renderList(myLeads); // show the contents of the list.
 
         // Save the myLeads array to localStorage
         localStorage.setItem("myLeads", JSON.stringify(myLeads));
@@ -58,17 +58,18 @@ deleteBtn.addEventListener('dblclick',() => {
 
     // set the value of myLeads to empty array;
     myLeads = [];
-    
+
     // clean up the list shown in the DOM
-    listEl.innerHTML = " ";
+    //listEl.innerHTML = " ";
+    renderList(myLeads);
 })
 
 // create a variable, listItems to hold all the HTML for the list Items.
 
 
-function renderList() {
+function renderList(leads) {
     let listItems = "" ; 
-    for(let i=0; i< myLeads.length; i++) {
+    for(let i=0; i< leads.length; i++) {
         // listItems += "<li><a target='_blank' href='" + myLeads[i] + "' >" + myLeads[i] + "</a></li>"
         //console.log(myLeads[i]);
         
@@ -80,8 +81,8 @@ function renderList() {
         //listEl.append(li);
 
         listItems += `<li>
-                            <a target='_blank' href='${myLeads[i]}' >
-                            ${myLeads[i]}
+                            <a target='_blank' href='${leads[i]}' >
+                            ${leads[i]}
                             </a>
                       </li>`
     }
