@@ -16,11 +16,12 @@
 const saveBtn = document.getElementById("input-btn");
 const inputEl = document.getElementById("input-el");
 const listEl = document.getElementById("list-el");
+const deleteBtn = document.getElementById("delete-btn");
 
 // Try to show previously saved leads from local storage
 let myLeads = [] //JSON.parse(localStorage.getItem("myLeads")) || [];
 
-let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
+const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
 if (!Boolean(leadsFromLocalStorage)){
     console.log("Nothing Found in local storage.");
 }
@@ -47,6 +48,19 @@ saveBtn.addEventListener('click', () => {
     
     //appendList();
     //displayList();
+});
+
+//Handle the double click event from delete button
+deleteBtn.addEventListener('dblclick',() => {
+    //clear local storage
+    localStorage.clear();
+    //localStorage.removeItem('myLeads');
+
+    // set the value of myLeads to empty array;
+    myLeads = [];
+    
+    // clean up the list shown in the DOM
+    listEl.innerHTML = " ";
 })
 
 // create a variable, listItems to hold all the HTML for the list Items.
