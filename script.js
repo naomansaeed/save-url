@@ -17,6 +17,7 @@ const saveBtn = document.getElementById("input-btn");
 const inputEl = document.getElementById("input-el");
 const listEl = document.getElementById("list-el");
 const deleteBtn = document.getElementById("delete-btn");
+const tabBtn = document.getElementById("tab-btn")
 
 // Try to show previously saved leads from local storage
 let myLeads = [] //JSON.parse(localStorage.getItem("myLeads")) || [];
@@ -49,6 +50,32 @@ saveBtn.addEventListener('click', () => {
     //appendList();
     //displayList();
 });
+
+//const tabs = [
+//    {url: "https://www.linkdin.com/in/per-harold-borgen/"}
+//]
+
+// handle 'click' event listener for save tabBtn
+tabBtn.addEventListener('click', function() {
+    //console.log("tab button clicked");
+    //console.log(tabs[0].url);
+
+    // retrieve the current chrome tab FR.
+    chrome.tabs.query ({active:true, currentWindow:true}, function(tabs){
+        //let activeTab = tabs[0];
+        //let activeTabId = activeTab.id;
+
+        //push the url to myleads array
+        myLeads.push(tabs[0].url);
+
+        //save myLeads array to localStorage
+        localStorage.setItem("myLeads", JSON.stringify(myLeads));
+
+        //render myLeads to the page
+        renderList(myLeads);
+
+    })
+})
 
 //Handle the double click event from delete button
 deleteBtn.addEventListener('dblclick',() => {
